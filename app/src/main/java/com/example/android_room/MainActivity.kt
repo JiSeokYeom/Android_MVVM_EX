@@ -61,11 +61,12 @@ class MainActivity : AppCompatActivity() {
 
         // 추가 버튼
         binding.addBtn.setOnClickListener {
-            val name = binding.nameInput.text.toString()
-            val age = binding.ageInput.text.toString()
-            val phone = binding.phoneInput.text.toString()
+            with(binding){
+            val name = nameInput.text.toString()
+            val age = ageInput.text.toString()
+            val phone = phoneInput.text.toString()
 
-            binding.apply {
+
                 when {
                     nameInput.text.isNullOrBlank() -> {
                         Toast.makeText(this@MainActivity, "이름을 입력해주세요", Toast.LENGTH_SHORT).show()

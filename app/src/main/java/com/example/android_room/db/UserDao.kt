@@ -1,6 +1,9 @@
 package com.example.android_room.db
 
+
+import androidx.lifecycle.LiveData
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface UserDao {
@@ -13,8 +16,8 @@ interface UserDao {
     @Delete
     fun delete(user: User)
 
-    @Query("SELECT * FROM User") // 테이블의 모든 값을 가져와라
-    fun getAll() : List<User>
+    @Query("SELECT * FROM User ORDER BY name ASC") // 테이블의 모든 값을 가져와라
+    fun getAll() : LiveData<List<User>>
 
     @Query("DELETE FROM User WHERE name = :name") // 'name'에 해당하는 유저를 삭제해라
     fun deleteUserByName(name : String)

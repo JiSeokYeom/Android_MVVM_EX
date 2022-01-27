@@ -2,17 +2,15 @@ package com.example.android_room.viewModel
 
 
 import android.app.Application
-import androidx.lifecycle.*
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import com.example.android_room.db.User
 import com.example.android_room.db.UserDB
 import com.example.android_room.db.UserDao
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
 
 class MainViewModel(application: Application) : AndroidViewModel(Application()) {
-
     var users : LiveData<List<User>>
-     private var userDao : UserDao
+    private var userDao : UserDao
     init {
         val db = UserDB.getInstance(application)
         userDao = db!!.userDao()
@@ -29,7 +27,5 @@ class MainViewModel(application: Application) : AndroidViewModel(Application()) 
     fun deleteUserByName(name : String){
         userDao.deleteUserByName(name)
     }
-
-
 
 }

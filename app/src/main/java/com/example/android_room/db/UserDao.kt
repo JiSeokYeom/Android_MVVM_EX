@@ -17,6 +17,9 @@ interface UserDao {
     fun delete(user: User)
 
     @Query("SELECT * FROM User ORDER BY name ASC") // 테이블의 모든 값을 가져와라
+    // LiveData 쓰기 전
+    // fun getAll() : List<User>
+    // LiveData 쓴 후
     fun getAll() : LiveData<List<User>>
 
     @Query("DELETE FROM User WHERE name = :name") // 'name'에 해당하는 유저를 삭제해라
